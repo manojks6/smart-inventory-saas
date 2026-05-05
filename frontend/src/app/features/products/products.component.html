@@ -1,0 +1,89 @@
+<div class="p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h2 mb-1">Product Catalog</h1>
+      <p class="text-secondary">Manage your inventory items and pricing</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="addProduct()">
+      <mat-icon class="me-2">add</mat-icon>
+      New Product
+    </button>
+  </div>
+
+  <mat-card class="mat-elevation-z0 border rounded-4 overflow-hidden">
+    <table mat-table [dataSource]="products()" class="w-100">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Product </th>
+        <td mat-cell *matCellDef="let product"> 
+          <div class="d-flex align-items-center py-2">
+            <div class="bg-body-tertiary rounded-3 d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+              <mat-icon class="text-secondary">image</mat-icon>
+            </div>
+            <div>
+              <div class="fw-bold text-dark">{{product.name}}</div>
+              <div class="text-secondary small">ID: {{product.id.substring(0,8)}}</div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- SKU Column -->
+      <ng-container matColumnDef="sku">
+        <th mat-header-cell *matHeaderCellDef> SKU </th>
+        <td mat-cell *matCellDef="let product"> 
+          <code class="bg-light px-2 py-1 rounded text-dark">{{product.sku}}</code>
+        </td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let product"> {{product.price | currency}} </td>
+      </ng-container>
+
+      <!-- Stock Column -->
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef> Stock </th>
+        <td mat-cell *matCellDef="let product">
+          <span class="badge rounded-pill" 
+                [class.bg-success-subtle]="product.stock > 10" [class.text-success]="product.stock > 10"
+                [class.bg-warning-subtle]="product.stock <= 10 && product.stock > 0" [class.text-warning]="product.stock <= 10 && product.stock > 0"
+                [class.bg-danger-subtle]="product.stock === 0" [class.text-danger]="product.stock === 0">
+            {{product.stock || 0}} in stock
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let product">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Edit Details</span>
+            </button>
+            <button mat-menu-item (click)="deleteProduct(product.id)" class="text-danger">
+              <mat-icon color="warn">delete</mat-icon>
+              <span>Delete Product</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div *ngIf="products().length === 0" class="p-5 text-center">
+      <mat-icon style="font-size: 3rem; width: 3rem; height: 3rem;" class="text-secondary opacity-25">inventory_2</mat-icon>
+      <p class="mt-3 text-secondary">No products found in your catalog.</p>
+      <button mat-stroked-button color="primary" class="mt-2" (click)="addProduct()">Add your first product</button>
+    </div>
+  </mat-card>
+</div>

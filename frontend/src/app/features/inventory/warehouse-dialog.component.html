@@ -1,0 +1,28 @@
+<h2 mat-dialog-title class="m-0 fw-bold border-bottom pb-3">
+  <div class="d-flex align-items-center">
+    <mat-icon color="primary" class="me-2">add_location</mat-icon>
+    Add New Warehouse
+  </div>
+</h2>
+
+<mat-dialog-content class="pt-4" style="overflow: visible;">
+  <form [formGroup]="warehouseForm" class="dialog-form">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Warehouse Name</mat-label>
+      <input matInput formControlName="name" placeholder="Main Distribution Center">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Location / Address</mat-label>
+      <input matInput formControlName="location" placeholder="City, Country">
+      <mat-icon matPrefix class="me-2 text-secondary">place</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="border-top pt-3">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="warehouseForm.invalid" class="ms-2">
+    Create Warehouse
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,162 @@
+<div class="d-grid gap-4">
+  <header class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+    <div>
+      <h1 class="display-6 fw-bold text-dark mb-1">Dashboard Overview</h1>
+      <p class="text-secondary mb-0">Welcome back, Manoj. Here's a summary of your business today.</p>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+      <button mat-stroked-button class="px-4 py-2 border-secondary-subtle text-secondary">
+        <mat-icon class="me-2">download</mat-icon> Export Report
+      </button>
+      <button mat-flat-button color="primary" class="px-4 py-2 shadow-sm">
+        <mat-icon class="me-2">add</mat-icon> New Order
+      </button>
+    </div>
+  </header>
+
+  <div class="row g-4">
+    <div class="col-12 col-md-6 col-xl-3">
+      <mat-card class="metric-card metric-card-primary h-100">
+        <div class="p-4 position-relative">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="icon-chip rounded-4 bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center">
+              <mat-icon>inventory_2</mat-icon>
+            </div>
+            <span class="badge text-bg-primary-subtle text-primary-emphasis fw-semibold">+12%</span>
+          </div>
+          <p class="text-uppercase text-secondary small fw-semibold mb-1">Total Products</p>
+          <h3 class="display-6 fw-bold text-dark mb-0">1,284</h3>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-3">
+      <mat-card class="metric-card metric-card-success h-100">
+        <div class="p-4 position-relative">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="icon-chip rounded-4 bg-success-subtle text-success d-inline-flex align-items-center justify-content-center">
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+            <span class="badge text-bg-success-subtle text-success-emphasis fw-semibold">+5%</span>
+          </div>
+          <p class="text-uppercase text-secondary small fw-semibold mb-1">Active Orders</p>
+          <h3 class="display-6 fw-bold text-dark mb-0">42</h3>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-3">
+      <mat-card class="metric-card metric-card-violet h-100">
+        <div class="p-4 position-relative">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="icon-chip rounded-4 bg-secondary-subtle text-secondary d-inline-flex align-items-center justify-content-center">
+              <mat-icon>people</mat-icon>
+            </div>
+            <span class="badge text-bg-secondary-subtle text-secondary-emphasis fw-semibold">+24</span>
+          </div>
+          <p class="text-uppercase text-secondary small fw-semibold mb-1">Total Customers</p>
+          <h3 class="display-6 fw-bold text-dark mb-0">856</h3>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-3">
+      <mat-card class="metric-card metric-card-warning h-100">
+        <div class="p-4 position-relative">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="icon-chip rounded-4 bg-warning-subtle text-warning d-inline-flex align-items-center justify-content-center">
+              <mat-icon>trending_up</mat-icon>
+            </div>
+            <span class="badge text-bg-warning-subtle text-warning-emphasis fw-semibold">+8.2%</span>
+          </div>
+          <p class="text-uppercase text-secondary small fw-semibold mb-1">Monthly Revenue</p>
+          <h3 class="display-6 fw-bold text-dark mb-0">$12,482</h3>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-12 col-xl-8">
+      <mat-card class="p-0 overflow-hidden h-100">
+        <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom bg-white">
+          <h3 class="h5 fw-bold text-dark mb-0">Recent Transactions</h3>
+          <a href="#" class="link-primary fw-semibold text-decoration-none">View all</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="px-4 py-3 small text-uppercase text-secondary">Order ID</th>
+                <th class="px-4 py-3 small text-uppercase text-secondary">Customer</th>
+                <th class="px-4 py-3 small text-uppercase text-secondary">Amount</th>
+                <th class="px-4 py-3 small text-uppercase text-secondary">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of [
+                {id: '#ORD-9421', name: 'John Cooper', amount: '$420.00', status: 'Delivered'},
+                {id: '#ORD-9422', name: 'Sarah Miller', amount: '$1,240.00', status: 'Processing'},
+                {id: '#ORD-9423', name: 'Robert Fox', amount: '$85.50', status: 'Pending'},
+                {id: '#ORD-9424', name: 'Jane Smith', amount: '$210.00', status: 'Delivered'}
+              ]">
+                <td class="px-4 py-3 fw-semibold text-dark">{{order.id}}</td>
+                <td class="px-4 py-3 text-secondary">{{order.name}}</td>
+                <td class="px-4 py-3 fw-bold text-dark">{{order.amount}}</td>
+                <td class="px-4 py-3">
+                  <span
+                    class="badge fw-semibold"
+                    [ngClass]="{
+                      'text-bg-success': order.status === 'Delivered',
+                      'text-bg-primary': order.status === 'Processing',
+                      'text-bg-warning': order.status === 'Pending'
+                    }">
+                    {{order.status}}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-12 col-xl-4 d-grid gap-4">
+      <mat-card class="insight-card p-4">
+        <mat-icon class="watermark-icon">rocket_launch</mat-icon>
+        <div class="position-relative">
+          <h3 class="h5 fw-bold mb-2">Inventory Insights</h3>
+          <p class="text-white-50 mb-4">You have 12 items that are below the safety stock level.</p>
+          <button mat-flat-button class="btn btn-light text-primary fw-semibold w-100" type="button">
+            Optimize Stock
+          </button>
+        </div>
+      </mat-card>
+
+      <mat-card class="p-4">
+        <h3 class="h5 fw-bold text-dark mb-3">Stock Alerts</h3>
+        <div class="d-grid gap-3">
+          <div
+            *ngFor="let item of [
+              {name: 'Premium Mouse', stock: 2, tone: 'danger'},
+              {name: 'Mechanical Keyboard', stock: 5, tone: 'warning'}
+            ]"
+            class="d-flex align-items-center justify-content-between rounded-4 border p-3"
+            [ngClass]="{
+              'bg-danger-subtle border-danger-subtle': item.tone === 'danger',
+              'bg-warning-subtle border-warning-subtle': item.tone === 'warning'
+            }">
+            <div>
+              <p class="fw-semibold text-dark mb-1">{{item.name}}</p>
+              <p class="small text-secondary mb-0">Only {{item.stock}} units left</p>
+            </div>
+            <mat-icon [ngClass]="{
+              'text-danger': item.tone === 'danger',
+              'text-warning': item.tone === 'warning'
+            }">warning</mat-icon>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

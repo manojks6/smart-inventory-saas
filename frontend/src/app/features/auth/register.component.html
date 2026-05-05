@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 p-3">
+  <mat-card class="login-card p-4">
+    <mat-card-header class="justify-content-center mb-4">
+      <div class="text-center">
+        <mat-icon color="primary" style="font-size: 3rem; width: 3rem; height: 3rem;">inventory_2</mat-icon>
+        <h1 class="mt-2 mb-0">Create Account</h1>
+        <p class="text-muted">Set up your smart inventory dashboard</p>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-100">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="John">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="Doe">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="john@example.com">
+          <mat-icon matPrefix class="me-2 text-muted">email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <mat-icon matPrefix class="me-2 text-muted">lock</mat-icon>
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+          <mat-label>Company / Organization Name</mat-label>
+          <input matInput formControlName="tenantName" placeholder="Acme Corp">
+          <mat-icon matPrefix class="me-2 text-muted">business</mat-icon>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" class="w-100 py-4 mt-3" [disabled]="registerForm.invalid">
+          Get Started
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-footer class="text-center p-4">
+      <p class="mb-0">Already have an account? <a routerLink="/login" class="text-decoration-none fw-bold">Sign In</a></p>
+    </mat-card-footer>
+  </mat-card>
+</div>

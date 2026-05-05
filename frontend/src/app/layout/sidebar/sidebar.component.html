@@ -1,0 +1,63 @@
+<div class="h-100 bg-white d-flex flex-column">
+  <mat-nav-list class="flex-grow-1">
+    <div class="px-4 py-4 sidebar-section-label">
+      Main Menu
+    </div>
+
+    <a mat-list-item routerLink="/dashboard" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>dashboard</mat-icon>
+      <span matListItemTitle>Dashboard</span>
+    </a>
+
+    <a mat-list-item routerLink="/products" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>inventory_2</mat-icon>
+      <span matListItemTitle>Products</span>
+    </a>
+
+    <a mat-list-item routerLink="/inventory" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>warehouse</mat-icon>
+      <span matListItemTitle>Inventory</span>
+    </a>
+
+    <mat-divider class="my-2"></mat-divider>
+
+    <div class="px-4 py-4 sidebar-section-label">
+      Sales & Customers
+    </div>
+
+    <a mat-list-item routerLink="/orders" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>shopping_cart</mat-icon>
+      <span matListItemTitle>Orders</span>
+    </a>
+
+    <a mat-list-item routerLink="/customers" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>people</mat-icon>
+      <span matListItemTitle>Customers</span>
+    </a>
+
+    <mat-divider class="my-2"></mat-divider>
+
+    <div class="px-4 py-4 sidebar-section-label">
+      Analysis
+    </div>
+
+    <a mat-list-item routerLink="/reports" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>bar_chart</mat-icon>
+      <span matListItemTitle>Reports</span>
+    </a>
+
+    <a mat-list-item routerLink="/users" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>people_outline</mat-icon>
+      <span matListItemTitle>Users</span>
+    </a>
+
+    <a mat-list-item routerLink="/settings" routerLinkActive="sidebar-link-active">
+      <mat-icon matListItemIcon>settings</mat-icon>
+      <span matListItemTitle>Settings</span>
+    </a>
+  </mat-nav-list>
+
+  <div class="p-4 border-top bg-body-tertiary text-center">
+    <p class="small text-secondary mb-0">v1.0.0 Alpha</p>
+  </div>
+</div>

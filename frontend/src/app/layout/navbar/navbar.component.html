@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center">
+    <button mat-icon-button (click)="toggleSidebar.emit()" class="me-2">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="fw-bold fs-5">Smart Inventory</span>
+  </div>
+
+  <div class="d-flex align-items-center gap-2">
+    <button mat-icon-button>
+      <mat-icon>notifications</mat-icon>
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="profileMenu" class="d-flex align-items-center">
+      <mat-icon class="me-1">account_circle</mat-icon>
+      <span>{{ authService.currentUser()?.name || 'User' }}</span>
+    </button>
+
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/settings">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

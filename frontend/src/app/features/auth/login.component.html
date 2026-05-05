@@ -1,0 +1,50 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-body-tertiary p-4">
+  <mat-card class="w-100 login-card p-4 p-md-5">
+    <div class="text-center mb-4">
+      <div
+        class="bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center rounded-4 mx-auto mb-3 shadow-sm icon-chip">
+        <mat-icon>lock</mat-icon>
+      </div>
+      <h1 class="h2 fw-bold text-dark mb-2">Welcome Back</h1>
+      <p class="text-secondary mb-0">Please sign in to your account</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-grid gap-3">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="name@company.com">
+        <mat-icon matPrefix class="me-2 text-secondary">email</mat-icon>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email address</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+        <mat-icon matPrefix class="me-2 text-secondary">lock</mat-icon>
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+
+      <div class="d-flex justify-content-between align-items-center small">
+        <a routerLink="/forgot-password" class="link-primary text-decoration-none">Forgot password?</a>
+      </div>
+
+      <button
+        mat-flat-button
+        color="primary"
+        class="w-100 py-3 fs-6 fw-semibold shadow-sm"
+        type="submit"
+        [disabled]="loginForm.invalid">
+        Sign In
+      </button>
+    </form>
+
+    <div class="mt-4 pt-2 text-center small text-secondary">
+      Don't have an account?
+      <a routerLink="/register" class="link-primary fw-semibold text-decoration-none">Create account</a>
+    </div>
+  </mat-card>
+</div>

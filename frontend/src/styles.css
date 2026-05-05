@@ -1,0 +1,159 @@
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #f8f9fa;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mat-mdc-card {
+  display: block !important;
+  background-color: #fff !important;
+  border: 0 !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.08) !important;
+}
+
+.mat-mdc-button-base {
+  border-radius: 0.75rem !important;
+}
+
+.mat-toolbar {
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08) !important;
+}
+
+.app-shell {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  width: 16rem;
+  border-right: 1px solid #dee2e6;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.5rem rgba(15, 23, 42, 0.06);
+}
+
+.app-content {
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+.app-main {
+  max-width: 1280px;
+}
+
+.metric-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1.25rem 2.5rem rgba(15, 23, 42, 0.12) !important;
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  opacity: 0.15;
+}
+
+.metric-card-primary {
+  background: linear-gradient(135deg, #ffffff, #eef6ff);
+}
+
+.metric-card-primary::after {
+  background-color: #0d6efd;
+}
+
+.metric-card-success {
+  background: linear-gradient(135deg, #ffffff, #eefbf3);
+}
+
+.metric-card-success::after {
+  background-color: #198754;
+}
+
+.metric-card-violet {
+  background: linear-gradient(135deg, #ffffff, #f5f0ff);
+}
+
+.metric-card-violet::after {
+  background-color: #6f42c1;
+}
+
+.metric-card-warning {
+  background: linear-gradient(135deg, #ffffff, #fff4e6);
+}
+
+.metric-card-warning::after {
+  background-color: #fd7e14;
+}
+
+.icon-chip {
+  width: 3rem;
+  height: 3rem;
+}
+
+.insight-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #212529, #343a40);
+  color: #fff;
+}
+
+.watermark-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 4rem;
+  opacity: 0.08;
+}
+
+.sidebar-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.sidebar-link-active {
+  background-color: rgba(13, 110, 253, 0.08) !important;
+  color: #0d6efd !important;
+  border-right: 4px solid #0d6efd;
+}
+
+.mat-mdc-list-item.sidebar-link-active .mdc-list-item__primary-text,
+.mat-mdc-list-item.sidebar-link-active .mat-icon {
+  color: inherit !important;
+}
+
+.login-card {
+  max-width: 28rem;
+}
+
+.w-100 .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Fix for Dialog Clipping */
+.premium-dialog, .cdk-overlay-pane {
+  overflow: visible !important;
+}
+.mat-mdc-dialog-container {
+  overflow: visible !important;
+}
+.mat-mdc-dialog-content {
+  overflow: visible !important;
+  max-height: 70vh !important;
+}

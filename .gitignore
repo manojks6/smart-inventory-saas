@@ -1,0 +1,42 @@
+# --- GLOBAL DEPENDENCIES ---
+**/node_modules/
+**/dist/
+**/build/
+**/coverage/
+**/.angular/
+**/.next/
+**/out/
+
+# --- ENVIRONMENT & SECRETS ---
+**/.env
+**/.env.*
+!**/.env.example
+
+# --- BACKEND SPECIFIC (NestJS/TypeORM) ---
+**/dist/
+**/db/data/
+**/*.tsbuildinfo
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# --- FRONTEND SPECIFIC (Angular) ---
+**/.angular/cache/
+**/project.fragment.lock
+**/.cache/
+
+# --- IDEs & EDITORS ---
+**/.vscode/
+**/.idea/
+**/*.swp
+**/*.swo
+**/*.swn
+**/.editorconfig
+
+# --- OS FILES ---
+.DS_Store
+Thumbs.db
+
+# --- GIT ---
+**/.git/
+!.gitignore

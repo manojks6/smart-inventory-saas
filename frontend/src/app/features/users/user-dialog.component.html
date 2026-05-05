@@ -1,0 +1,54 @@
+<h2 mat-dialog-title class="m-0 fw-bold border-bottom pb-2">
+  <div class="d-flex align-items-center">
+    <mat-icon color="primary" class="me-2">person_add</mat-icon>
+    {{ isEdit ? 'Edit User' : 'Create User' }}
+  </div>
+</h2>
+
+<mat-dialog-content class="pt-3">
+  <form [formGroup]="userForm" class="dialog-form">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="density-compact">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="density-compact">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email Address</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-icon matPrefix class="me-2 text-secondary">email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="!isEdit">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-icon matPrefix class="me-2 text-secondary">lock</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="userRole">
+        <mat-option value="ADMIN">Admin</mat-option>
+        <mat-option value="MANAGER">Manager</mat-option>
+        <mat-option value="STAFF">Staff</mat-option>
+      </mat-select>
+      <mat-icon matPrefix class="me-2 text-secondary">admin_panel_settings</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="border-top pt-2">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="userForm.invalid" class="ms-2">
+    {{ isEdit ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>
