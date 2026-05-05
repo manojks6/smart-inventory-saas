@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -26,7 +27,8 @@ export const routes: Routes = [
       },
       { 
         path: 'users', 
-        loadComponent: () => import('./features/users/user-list.component').then(m => m.UserListComponent) 
+        loadComponent: () => import('./features/users/user-list.component').then(m => m.UserListComponent),
+        canActivate: [roleGuard]
       },
       { 
         path: 'inventory', 
@@ -35,7 +37,11 @@ export const routes: Routes = [
       { path: 'orders', loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent) },
       { path: 'customers', loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent) },
       { path: 'reports', loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent) },
-      { path: 'settings', loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent) },
+      { 
+        path: 'settings', 
+        loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent),
+        canActivate: [roleGuard]
+      },
     ]
   },
   { path: '**', redirectTo: 'dashboard' }
