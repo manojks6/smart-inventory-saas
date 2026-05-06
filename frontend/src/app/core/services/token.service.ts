@@ -25,6 +25,7 @@ export class TokenService {
 
   public getUser(): any {
     const user = window.localStorage.getItem(this.USER_KEY);
+    console.log('user', user);
     if (user) {
       return JSON.parse(user);
     }

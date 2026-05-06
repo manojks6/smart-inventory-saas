@@ -24,7 +24,7 @@ import { AuthService } from '../../core/services/auth.service';
   `]
 })
 export class SidebarComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   get isAdmin(): boolean {
     return this.authService.currentUser()?.role === 'ADMIN';

@@ -44,6 +44,7 @@ export class LoginComponent {
         error: (err) => {
           console.error('Login failed', err);
           // TODO: Add snackbar/error message
+          alert(err)
         }
       });
     }

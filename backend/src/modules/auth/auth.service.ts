@@ -13,7 +13,7 @@ export class AuthService {
     private readonly usersService: UsersService,
     private readonly tenantsService: TenantsService,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async register(registerDto: RegisterDto) {
     const { email, password, firstName, lastName, tenantName } = registerDto;
@@ -59,15 +59,18 @@ export class AuthService {
     const payload = {
       sub: user.id,
       email: user.email,
+      name: `${user.firstName} ${user.lastName}`,
       tenantId: user.tenantId,
       role: user.role,
     };
+    // console.log(this.jwtService.sign(payload))
 
     return {
       access_token: this.jwtService.sign(payload),
       user: {
         id: user.id,
         email: user.email,
+        name: `${user.firstName} ${user.lastName}`,
         role: user.role,
         tenantId: user.tenantId,
       },

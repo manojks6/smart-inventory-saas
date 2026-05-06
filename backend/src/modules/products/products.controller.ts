@@ -30,10 +30,10 @@ export class ProductsController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateProductDto: Partial<CreateProductDto>,
     @GetUser('tenantId') tenantId: string,
+    @Body() updateProductDto: Partial<CreateProductDto>,
   ) {
-    return this.productsService.update(id, updateProductDto, tenantId);
+    return this.productsService.update(id, tenantId, updateProductDto);
   }
 
   @Delete(':id')

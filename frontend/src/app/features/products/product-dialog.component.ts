@@ -48,7 +48,10 @@ export class ProductDialogComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-      this.productsService.createProduct(this.productForm.value).subscribe({
+      const request = this.isEdit
+        ? this.productsService.updateProduct(this.data.id, this.productForm.value)
+        : this.productsService.createProduct(this.productForm.value);
+      request.subscribe({
         next: (product) => this.dialogRef.close(product),
         error: (err) => console.error('Error saving product', err)
       });

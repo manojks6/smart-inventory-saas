@@ -41,10 +41,19 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct(): void {
+    this.openProductDialog();
+  }
+
+  editProduct(product: any): void {
+    this.openProductDialog(product);
+  }
+
+  private openProductDialog(product?: any): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '500px',
       maxWidth: '95vw',
-      disableClose: true
+      disableClose: true,
+      data: product
     });
 
     dialogRef.afterClosed().subscribe(result => {

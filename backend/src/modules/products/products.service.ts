@@ -27,18 +27,14 @@ export class ProductsService {
   }
 
   async findOne(id: string, tenantId: string): Promise<Product> {
-    const product = await this.productRepository.findOne({
-      where: { id, tenantId },
-    });
-    if (!product) {
-      throw new NotFoundException(`Product with ID ${id} not found`);
-    }
+    const product = await this.productRepository.findOne({ where: { id, tenantId } });
+    if (!product) throw new NotFoundException('Product not found');
     return product;
   }
 
-  async update(id: string, updateData: Partial<CreateProductDto>, tenantId: string): Promise<Product> {
+  async update(id: string, tenantId: string, updateProductDto: Partial<CreateProductDto>): Promise<Product> {
     const product = await this.findOne(id, tenantId);
-    Object.assign(product, updateData);
+    Object.assign(product, updateProductDto);
     return this.productRepository.save(product);
   }
 
